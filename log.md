@@ -15,6 +15,7 @@
 >
 > 2.  **Iterative Deep Dive (up to 10 files):**
 >     *   Based on your initial findings, select a few files that seem most important (e.g., configuration files, main source files, documentation).
+>
 >     *   Read them. As you learn more, refine your understanding and decide which files to read next. You don't need to decide all 10 files at once. Let your discoveries guide your exploration.
 >
 > 3.  **Identify Project Type:**
@@ -394,3 +395,21 @@ I have successfully pushed the `README.md` file to the GitHub repository: `https
 3.  **Commit changes:** I will commit the changes with a descriptive message.
 4.  **Push to GitHub:** I will push the changes to the remote repository.
 5.  **Response:** I will inform the user about the successful push and that I will stop logging to `log.md`.
+
+---
+
+### Git Add log.md
+
+1.  **Add `log.md`:** `default_api.run_shell_command(command = "git add log.md", description = "Add log.md to the Git staging area.")`
+
+### Git Commit log.md
+
+1.  **Commit changes:** `default_api.run_shell_command(command = "git commit -m \"Update log.md with final entries\"", description = "Commit the updated log.md file.")`
+
+### Git Push log.md
+
+1.  **Push to GitHub:** `default_api.run_shell_command(command = "git push -u origin master", description = "Push the updated log.md to the remote GitHub repository.")`
+
+### Task Completed
+
+I have successfully pushed the `log.md` file to the GitHub repository: `https://github.com/YiKai07/IoT-DA_LR_CRISP-DM_HW1.git`.
