@@ -1,7 +1,8 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt # Removed
+import altair as alt # Added
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
@@ -68,22 +69,40 @@ st.write(f"Coefficient of Determination (R^2): {r2:.2f}")
 st.write(f"Intercept: {model.intercept_:.2f}, Coefficient: {model.coef_[0]:.2f}")
 
 # ===============================
-# 7. Visualization
+# 7. Visualization (using Altair)
 # ===============================
-fig, ax = plt.subplots()
+# Prepare data for Altair
+plot_data = data.copy()
+plot_data['Prediction'] = model.predict(data[['Area']])
 
-inliers = data[~data['is_outlier']]
-outliers = data[data['is_outlier']]
+# Base scatter plot for inliers and outliers
+base = alt.Chart(plot_data).encode(
+    x=alt.X('Area', title='Area (square meters)'),
+    y=alt.Y('Price', title='Price (in 10,000s)')
+).properties(
+    title='Linear Regression: House Area vs. Price'
+)
 
-ax.scatter(inliers['Area'], inliers['Price'], color='blue', label='Inliers')
-ax.scatter(outliers['Area'], outliers['Price'], color='red', label='Outliers')
-ax.plot(X_test, y_pred, color='green', linewidth=2, label='Prediction line')
+# Layer for inliers
+inliers_chart = base.mark_circle().encode(
+    color=alt.condition(
+        alt.datum.is_outlier,
+        alt.value('red'),  # Outliers in red
+        alt.value('blue')   # Inliers in blue
+    ),
+    tooltip=['Area', 'Price', 'is_outlier']
+)
 
-ax.set_title('Linear Regression: House Area vs. Price')
-ax.set_xlabel('Area (square meters)')
-ax.set_ylabel('Price (in 10,000s)')
-ax.legend()
-st.pyplot(fig)
+# Layer for prediction line
+prediction_line = base.mark_line(color='green').encode(
+    y='Prediction',
+    tooltip=['Area', 'Prediction']
+)
+
+# Combine charts
+chart = inliers_chart + prediction_line
+st.altair_chart(chart, use_container_width=True)
+
 
 # ===============================
 # 8. Deployment (simple demonstration)
