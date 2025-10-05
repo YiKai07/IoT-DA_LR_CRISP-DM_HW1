@@ -1,8 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-# import matplotlib.pyplot as plt # Removed
-import altair as alt # Added
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
@@ -20,7 +19,7 @@ with st.sidebar:
 # ===============================
 # 2. Main area for output
 # ===============================
-st.title('Linear Regression with Streamlit')
+st.title('Linear Regression with Streamlit and Matplotlib')
 
 # ===============================
 # 3. Data generation and outlier detection
@@ -32,7 +31,7 @@ price = area * a + noise
 
 data = pd.DataFrame({'Area': area, 'Price': price})
 
-# Outlier detection
+# Outlier detection (using IQR method)
 Q1 = data['Price'].quantile(0.25)
 Q3 = data['Price'].quantile(0.75)
 IQR = Q3 - Q1
@@ -69,40 +68,24 @@ st.write(f"Coefficient of Determination (R^2): {r2:.2f}")
 st.write(f"Intercept: {model.intercept_:.2f}, Coefficient: {model.coef_[0]:.2f}")
 
 # ===============================
-# 7. Visualization (using Altair)
+# 7. Visualization (using Matplotlib)
 # ===============================
-# Prepare data for Altair
-plot_data = data.copy()
-plot_data['Prediction'] = model.predict(data[['Area']])
+fig, ax = plt.subplots(figsize=(10, 6))
 
-# Base scatter plot for inliers and outliers
-base = alt.Chart(plot_data).encode(
-    x=alt.X('Area', title='Area (square meters)'),
-    y=alt.Y('Price', title='Price (in 10,000s)')
-).properties(
-    title='Linear Regression: House Area vs. Price'
-)
+# Plot inliers
+ax.scatter(data[~data['is_outlier']]['Area'], data[~data['is_outlier']]['Price'], label='Inliers', color='blue')
+# Plot outliers
+ax.scatter(data[data['is_outlier']]['Area'], data[data['is_outlier']]['Price'], label='Outliers', color='red')
 
-# Layer for inliers
-inliers_chart = base.mark_circle().encode(
-    color=alt.condition(
-        alt.datum.is_outlier,
-        alt.value('red'),  # Outliers in red
-        alt.value('blue')   # Inliers in blue
-    ),
-    tooltip=['Area', 'Price', 'is_outlier']
-)
+# Plot regression line
+ax.plot(data['Area'], model.predict(data[['Area']]), color='green', linewidth=2, label='Regression Line')
 
-# Layer for prediction line
-prediction_line = base.mark_line(color='green').encode(
-    y='Prediction',
-    tooltip=['Area', 'Prediction']
-)
-
-# Combine charts
-chart = inliers_chart + prediction_line
-st.altair_chart(chart, use_container_width=True)
-
+ax.set_title('Linear Regression: Area vs. Price')
+ax.set_xlabel('Area (square meters)')
+ax.set_ylabel('Price (in 10,000s)')
+ax.grid(True)
+ax.legend()
+st.pyplot(fig) # Display the plot in Streamlit
 
 # ===============================
 # 8. Deployment (simple demonstration)

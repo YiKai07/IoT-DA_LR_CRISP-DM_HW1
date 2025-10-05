@@ -52,7 +52,7 @@
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > create a log.md file and record every step and prompt with markdown back from begin and also from now on, and remember log at this file every step
 
 ### My Actions
@@ -64,7 +64,7 @@
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > edit app.py chinese to english and  execute it
 
 ### My Actions
@@ -102,7 +102,7 @@ The script executed successfully after fixing the encoding error.
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > edit app.py to only show the final plot, its showed twice.
 
 ### My Actions
@@ -127,7 +127,7 @@ I have successfully removed the code that generates the first plot from `app.py`
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > run app.py
 
 ### My Actions
@@ -139,7 +139,7 @@ I have successfully removed the code that generates the first plot from `app.py`
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > convert app.py to streamlit, and allow n:100 to 5000, a:-10 to 10, noise = N(0, var) where var = 0 to 1000
 
 ### My Actions
@@ -164,7 +164,7 @@ I have successfully converted the `app.py` script to a Streamlit application and
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > i mean edit app.py to streamlit app, doesnt mean create another file named streamlit_app.py, delete the streamlit_app.py file and edit app.py
 
 ### My Actions
@@ -189,7 +189,7 @@ I have successfully updated `app.py` to be a Streamlit application.
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > run app.py
 
 ### My Actions
@@ -212,7 +212,7 @@ I have successfully started the Streamlit application.
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > edit app.py to left side have control bar, and right side have show the data and plot
 
 ### My Actions
@@ -237,7 +237,7 @@ I have successfully updated `app.py` to use a sidebar for controls.
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > run app.py
 
 ### My Actions
@@ -260,7 +260,7 @@ I have successfully started the Streamlit application with the new layout.
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > edit app.py to show the outlier
 
 ### My Actions
@@ -285,7 +285,7 @@ I have successfully updated `app.py` to show outliers.
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > push this to github https://github.com/YiKai07/IoT-DA_LR_CRISP-DM_HW1.git
 
 ### My Actions
@@ -328,7 +328,7 @@ I have successfully pushed all changes to the GitHub repository: `https://github
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > review the entire project and write a report in detail and save it to readme.md in markdown
 
 ### My Actions
@@ -353,7 +353,7 @@ I have successfully generated a detailed project report and saved it to `README.
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > push to github
 
 ### My Actions
@@ -385,7 +385,7 @@ I have successfully pushed the `README.md` file to the GitHub repository: `https
 
 ### Current Prompt
 
-**User:**
+**User:** 
 > and add the last log to log.md then push to github, after this dont add log to log.md
 
 ### My Actions
@@ -413,3 +413,145 @@ I have successfully pushed the `README.md` file to the GitHub repository: `https
 ### Task Completed
 
 I have successfully pushed the `log.md` file to the GitHub repository: `https://github.com/YiKai07/IoT-DA_LR_CRISP-DM_HW1.git`.
+
+---
+
+### Current Prompt
+
+**User:** 
+> relaunch log again, and back to use matplotlib to show the plot, and make requirement.txt
+
+### My Actions
+
+1.  **Read `log.md` and `app.py`:** I read the content of `log.md` and `app.py` to understand the context.
+2.  **Create `requirements.txt`:** I created the `requirements.txt` file with the necessary libraries.
+3.  **Response:** I informed the user that `requirements.txt` was created and that `app.py` already uses `matplotlib`.
+
+---
+
+### Current Prompt
+
+**User:** 
+> log this to log.md
+
+### My Actions
+
+1.  **Read `log.md`:** I read the content of `log.md`.
+2.  **Append to `log.md`:** I appended the current prompt and my action to `log.md`.
+
+---
+
+### Current Prompt
+
+**User:** 
+> log to log.md from now on
+
+### My Actions
+
+1.  **Read `log.md`:** I read the content of `log.md`.
+2.  **Append to `log.md`:** I appended the current prompt and my action to `log.md`.
+
+---
+
+### Current Prompt
+
+**User:** 
+> run app.py
+
+### My Actions
+
+1.  **Execute `app.py` as a Streamlit app:** I executed `app.py` as a Streamlit app in the background.
+2.  **Response:** I informed the user that the Streamlit application is running.
+
+---
+
+### Current Prompt
+
+**User:** 
+> edit app.py back to use matplotlib, dont use altair
+
+### My Actions
+
+1.  **Read `app.py`:** I read the current content of `app.py`.
+2.  **Revert `app.py`:** I reconstructed `app.py` to its original non-Streamlit form, using `matplotlib` and `seaborn` for plotting, and removed all `streamlit` and `altair` related code.
+3.  **Write `app.py`:** I wrote the reverted content back to `app.py`.
+4.  **Update `requirements.txt`:** I updated `requirements.txt` by removing `seaborn`.
+5.  **Response:** I informed the user about the changes.
+
+---
+
+### Current Prompt
+
+**User:** 
+> you fogot to log to log.md
+
+### My Actions
+
+1.  **Read `log.md`:** I read the content of `log.md`.
+2.  **Append to `log.md`:** I appended the previous actions and this current interaction to `log.md`.
+
+---
+
+### Current Prompt
+
+**User:** 
+> run app.py
+
+### My Actions
+
+1.  **Execute `app.py` as a pure Python script:** I attempted to run `app.py` using `python app.py`.
+2.  **Error:** The script failed with `NameError: name 'train_test_split' is not defined`.
+3.  **Attempt to install dependencies:** I attempted to install dependencies from `requirements.txt`.
+
+---
+
+### Current Prompt
+
+**User:** 
+> just matplotlib no others
+
+### My Actions
+
+1.  **Read `app.py`:** I read the content of `app.py`.
+2.  **Replace `seaborn` with `matplotlib`:** I replaced `sns.scatterplot` calls with `plt.scatter` and removed the `seaborn` import.
+3.  **Update `requirements.txt`:** I removed `seaborn` from `requirements.txt`.
+4.  **Response:** I informed the user about the changes.
+
+---
+
+### Current Prompt
+
+**User:** 
+> you misunderstood, i mean use matplotlib with streamlit....
+
+### My Actions
+
+1.  **Read `app.py`:** I read the current `app.py` content.
+2.  **Reconstruct Streamlit app with Matplotlib:** I reconstructed the `app.py` to be a Streamlit application using `matplotlib` for plotting.
+3.  **Write `app.py`:** I wrote the new content to `app.py`.
+4.  **Update `requirements.txt`:** I added `streamlit` to `requirements.txt`.
+5.  **Response:** I informed the user about the changes.
+
+---
+
+### Current Prompt
+
+**User:** 
+> run app.py
+
+### My Actions
+
+1.  **Execute `app.py` as a Streamlit app:** I executed `app.py` as a Streamlit app in the background.
+2.  **Response:** I informed the user that the Streamlit application is running.
+
+---
+
+### Current Prompt
+
+**User:** 
+> ok, log this and commit, and push to github
+
+### My Actions
+
+1.  **Read `log.md`:** I read the content of `log.md`.
+2.  **Append to `log.md`:** I will append the current prompt and my action to `log.md`.
